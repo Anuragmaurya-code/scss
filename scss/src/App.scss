@@ -1,0 +1,47 @@
+$yellow_var: yellow; // variable
+.p.danger{
+  background-color: red;
+}
+.yellow{
+  background-color: $yellow_var;
+  ul{
+    background-color: purple; // nested
+  }
+
+  & .ordered{
+    background-color: purple; // nested
+    &:hover{
+      background-color: red; // active
+    }
+  }
+}
+
+
+@mixin same{
+  background-color: gray;
+}
+.same1{
+  @include same
+}
+.same2{
+  @include same
+}
+
+
+@mixin color-change($color){
+  background-color: $color;
+}
+.changeColor{
+  @include color-change(orange)
+}
+
+@mixin theme-colors($theme){
+  @if $theme=='light'{
+  background-color: lightblue;
+  }@else{
+    background-color:blue;
+  }
+}
+.function{
+  @include theme-colors('light')
+}
